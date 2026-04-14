@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sarjerao K. Shinde — DGM Engineering & Projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ── RESET & BASE ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+:root {
+  --navy:       #1B2A4A;
+  --navy-light: #243560;
+  --gold:       #C8963C;
+  --gold-light: #e0ab55;
+  --cream:      #F8F6F1;
+  --white:      #FFFFFF;
+  --text:       #2E2E2E;
+  --text-mid:   #555555;
+  --text-light: #888888;
+  --border:     #DDD8CE;
+  --section-bg: #F4F2ED;
+  --ff-display: 'Playfair Display', Georgia, serif;
+  --ff-body:    'Source Sans 3', 'Segoe UI', sans-serif;
+  --shadow-sm:  0 2px 8px rgba(27,42,74,0.07);
+  --shadow-md:  0 6px 24px rgba(27,42,74,0.10);
+  --shadow-lg:  0 16px 48px rgba(27,42,74,0.14);
+  --radius:     4px;
+  --max-w:      1080px;
+  --transition: 0.25s ease;
+}
+
+body {
+  font-family: var(--ff-body);
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SCROLLBAR ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* ── NAV ──────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(27,42,74,0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(200,150,60,0.25);
+  padding: 0 40px;
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  font-family: var(--ff-display);
+  font-size: 1.05rem;
+  color: var(--white);
+  letter-spacing: 0.03em;
+}
+.nav-brand span { color: var(--gold); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.nav-links a:hover { color: var(--gold); }
+
+/* ── HERO ─────────────────────────────────────────────────── */
+#hero {
+  background: var(--navy);
+  padding: 140px 40px 90px;
+  position: relative;
+  overflow: hidden;
+}
+#hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(200,150,60,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(200,150,60,0.05) 0%, transparent 50%);
+}
+#hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.hero-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  position: relative;
+}
+.hero-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+.hero-name {
+  font-family: var(--ff-display);
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.hero-title {
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.60);
+  margin-bottom: 36px;
+  letter-spacing: 0.03em;
+}
+.hero-title strong {
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+.hero-stats {
+  display: flex;
+  gap: 0;
+  margin-bottom: 44px;
+  border: 1px solid rgba(200,150,60,0.2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: fit-content;
+}
+.stat-item {
+  padding: 20px 36px;
+  border-right: 1px solid rgba(200,150,60,0.2);
+  text-align: center;
+}
+.stat-item:last-child { border-right: none; }
+.stat-number {
+  font-family: var(--ff-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  font-weight: 500;
+}
+.hero-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.55);
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.contact-item:hover { color: var(--gold); }
+.contact-icon {
+  width: 16px; height: 16px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+.hero-divider {
+  width: 48px; height: 1px;
+  background: rgba(255,255,255,0.15);
+}
+
+/* ── SECTION COMMON ───────────────────────────────────────── */
+section { padding: 80px 40px; }
+.section-inner { max-width: var(--max-w); margin: 0 auto; }
+.section-header { margin-bottom: 48px; }
+.section-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: var(--ff-display);
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.2;
+  position: relative;
+  padding-bottom: 18px;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 40px; height: 3px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+/* ── ABOUT ────────────────────────────────────────────────── */
+#about { background: var(--white); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.about-text p {
+  font-size: 1rem;
+  color: var(--text-mid);
+  margin-bottom: 18px;
+  line-height: 1.8;
+}
+.about-text p:first-child {
+  font-size: 1.08rem;
+  color: var(--text);
+  font-weight: 400;
+}
+.about-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.highlight-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: var(--cream);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.highlight-icon {
+  width: 36px; height: 36px;
+  background: var(--navy);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.highlight-icon svg { width: 16px; height: 16px; fill: var(--gold); }
+.highlight-text strong {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+.highlight-text span { font-size: 0.82rem; color: var(--text-mid); }
+
+/* ── COMPETENCIES ─────────────────────────────────────────── */
+#competencies { background: var(--section-bg); }
+.competency-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.competency-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  padding: 24px 22px;
+  border-radius: 0 0 var(--radius) var(--radius);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.competency-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.comp-icon {
+  width: 32px; height: 32px;
+  margin-bottom: 14px;
+  color: var(--gold);
+}
+.comp-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.comp-desc {
+  font-size: 0.80rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* ── EXPERIENCE ───────────────────────────────────────────── */
+#experience { background: var(--white); }
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold), var(--border));
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 44px;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: -34px; top: 6px;
+  width: 12px; height: 12px;
+  background: var(--gold);
+  border: 3px solid var(--white);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--gold);
+}
+.timeline-item.current .timeline-dot {
+  background: var(--navy);
+  box-shadow: 0 0 0 2px var(--navy);
+}
+.exp-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  transition: box-shadow var(--transition);
+}
+.exp-card:hover { box-shadow: var(--shadow-md); }
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.exp-company {
+  font-family: var(--ff-display);
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.exp-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+.badge-current {
+  background: rgba(27,42,74,0.08);
+  color: var(--navy);
+  border: 1px solid rgba(27,42,74,0.2);
+}
+.badge-past {
+  background: rgba(200,150,60,0.08);
+  color: var(--gold);
+  border: 1px solid rgba(200,150,60,0.25);
+}
+.exp-role {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.exp-meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.exp-meta span {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.exp-meta svg { width: 12px; height: 12px; fill: var(--text-light); }
+.exp-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.exp-bullets li {
+  font-size: 0.86rem;
+  color: var(--text-mid);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.55;
+}
+.exp-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 9px;
+  width: 6px; height: 6px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+}
+.exp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.exp-tag {
+  font-size: 0.70rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text-mid);
+}
+
+/* ── REGULATORY / KEY ACHIEVEMENTS ───────────────────────── */
+#achievements { background: var(--navy); }
+#achievements .section-title { color: var(--white); }
+#achievements .section-tag { color: var(--gold); }
+#achievements .section-title::after { background: var(--gold); }
+.achieve-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.achieve-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(200,150,60,0.15);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: background var(--transition), border-color var(--transition);
+}
+.achieve-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(200,150,60,0.35);
+}
+.achieve-num {
+  font-family: var(--ff-display);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.achieve-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.achieve-desc {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.6;
+}
+
+/* Regulatory audits strip */
+.audit-strip {
+  margin-top: 48px;
+  padding: 28px 32px;
+  border: 1px solid rgba(200,150,60,0.2);
+  border-radius: var(--radius);
+  background: rgba(200,150,60,0.04);
+}
+.audit-strip-title {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+.audit-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.audit-badge {
+  padding: 8px 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 2px;
+  font-size: 0.80rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.75);
+  transition: border-color var(--transition), color var(--transition);
+}
+.audit-badge:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ── INDUSTRIES ───────────────────────────────────────────── */
+#industries { background: var(--section-bg); }
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.industry-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 20px;
+  text-align: center;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.industry-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+.industry-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  display: block;
+}
+.industry-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.industry-note {
+  font-size: 0.76rem;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+/* ── EDUCATION ────────────────────────────────────────────── */
+#education { background: var(--white); }
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.edu-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.edu-year-block {
+  background: var(--navy);
+  color: var(--gold);
+  font-family: var(--ff-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  text-align: center;
+  min-width: 64px;
+  flex-shrink: 0;
+}
+.edu-degree {
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 5px;
+}
+.edu-institution {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  margin-bottom: 8px;
+}
+.edu-score {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  background: rgba(200,150,60,0.08);
+  border: 1px solid rgba(200,150,60,0.25);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+/* Training cards */
+.training-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+.training-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  padding: 20px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.training-title {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.training-org {
+  font-size: 0.78rem;
+  color: var(--text-light);
+}
+
+/* ── CONTACT ──────────────────────────────────────────────── */
+#contact { background: var(--navy); padding: 72px 40px; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.contact-left .section-title { color: var(--white); }
+.contact-left .section-title::after { background: var(--gold); }
+.contact-left p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.50);
+  margin-top: 20px;
+  line-height: 1.75;
+}
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background var(--transition), border-color var(--transition);
+}
+.contact-row:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(200,150,60,0.3);
+}
+.contact-row-icon {
+  width: 40px; height: 40px;
+  background: rgba(200,150,60,0.12);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.contact-row-icon svg { width: 18px; height: 18px; fill: var(--gold); }
+.contact-row-label {
+  font-size: 0.70rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 3px;
+}
+.contact-row-value {
+  font-size: 0.92rem;
+  color: var(--white);
+  font-weight: 500;
+}
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+footer {
+  background: #111A2E;
+  text-align: center;
+  padding: 24px 40px;
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.05em;
+}
+footer span { color: var(--gold); }
+
+/* ── FADE-IN ANIMATION ────────────────────────────────────── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: none;
+}
+.fade-up:nth-child(2) { transition-delay: 0.08s; }
+.fade-up:nth-child(3) { transition-delay: 0.14s; }
+.fade-up:nth-child(4) { transition-delay: 0.20s; }
+.fade-up:nth-child(5) { transition-delay: 0.26s; }
+.fade-up:nth-child(6) { transition-delay: 0.32s; }
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: 0.72rem; }
+  section { padding: 60px 20px; }
+  #hero { padding: 120px 20px 70px; }
+  .about-grid,
+  .achieve-grid,
+  .edu-grid,
+  .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+  .competency-grid { grid-template-columns: repeat(2, 1fr); }
+  .industry-grid { grid-template-columns: repeat(2, 1fr); }
+  .training-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-wrap: wrap; }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(200,150,60,0.2); padding: 16px 24px; }
+}
+@media (max-width: 600px) {
+  .hero-name { font-size: 2.2rem; }
+  .nav-links { display: none; }
+  .competency-grid { grid-template-columns: 1fr; }
+  .industry-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-stats { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ──────────────────────────────────────────── -->
+<nav>
+  <div class="nav-brand">Sarjerao K. <span>Shinde</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#competencies">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Senior Engineering Leadership</div>
+    <h1 class="hero-name">Sarjerao K. Shinde</h1>
+    <p class="hero-title">
+      <strong>Deputy General Manager – Engineering &amp; Projects</strong><br/>
+      Pharmaceutical Plant Engineering &nbsp;·&nbsp; Sterile &amp; Biotech Facilities &nbsp;·&nbsp; GMP Compliance
+    </p>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">28+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">6</div>
+        <div class="stat-label">Organisations</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">36</div>
+        <div class="stat-label">Max Team Size</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">7+</div>
+        <div class="stat-label">Regulatory Bodies</div>
+      </div>
+    </div>
+
+    <div class="hero-contact">
+      <a class="contact-item" href="tel:+919370511231">
+        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        +91 93705 11231
+      </a>
+      <div class="hero-divider"></div>
+      <a class="contact-item" href="tel:+918866162956">
+        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        +91 88661 62956
+      </a>
+      <div class="hero-divider"></div>
+      <a class="contact-item" href="mailto:shreyash56@gmail.com">
+        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        shreyash56@gmail.com
+      </a>
+      <div class="hero-divider"></div>
+      <span class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Ahmedabad, Gujarat
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-tag">Profile</div>
+      <h2 class="section-title">About</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>A seasoned engineering leader with over 28 years of progressive experience in pharmaceutical plant engineering and project execution across some of India's most respected pharmaceutical organisations.</p>
+        <p>Specialising in Sterile Injectable, Biopharmaceutical, API and Oral Solid Dosage (OSD) manufacturing environments, with a consistent record of delivering complex greenfield and brownfield projects on time and to GMP standards.</p>
+        <p>Recognised for the ability to lead large cross-functional engineering teams, manage international regulatory inspections, and drive operational excellence across all aspects of pharmaceutical facility engineering — from process equipment qualification to critical utility systems.</p>
+      </div>
+      <div class="about-highlights fade-up">
+        <div class="highlight-card">
+          <div class="highlight-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="highlight-text">
+            <strong>Senior Leadership</strong>
+            <span>DGM-level engineering head managing teams of up to 36 professionals across multi-plant operations</span>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+          </div>
+          <div class="highlight-text">
+            <strong>Regulatory Track Record</strong>
+            <span>Cleared USFDA, MHRA, TGA, MCC, UNICEF and IDA audits across multiple organisations</span>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+          </div>
+          <div class="highlight-text">
+            <strong>Project Execution</strong>
+            <span>Delivered sterile and biotech facility projects end-to-end — from IQ/OQ/PQ to final handover</span>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+          </div>
+          <div class="highlight-text">
+            <strong>Notice Period</strong>
+            <span>3 months notice period — negotiable for the right opportunity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPETENCIES ─────────────────────────────────────────── -->
+<section id="competencies">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-tag">Skills &amp; Expertise</div>
+      <h2 class="section-title">Core Competencies</h2>
+    </div>
+    <div class="competency-grid">
+
+      <div class="competency-card fade-up">
+        <svg class="comp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        <div class="comp-title">Pharma &amp; Biopharma Plant Engineering</div>
+        <div class="comp-desc">End-to-end engineering management for sterile injectable, biotech, API and OSD manufacturing facilities</div>
+      </div>
+
+      <div class="competency-card fade-up">
+        <svg class="comp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        <div class="comp-title">GMP Regulatory Compliance &amp; Audits</div>
+        <div class="comp-desc">Extensive experience with USFDA, MHRA, TGA, MCC, UNICEF and IDA inspections across multiple sites</div>
+      </div>
+
+      <div class="competency-card fade-up">
+        <svg class="comp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+        <div class="comp-title">Sterile &amp; Biotech Facility Projects</div>
+        <div class="comp-desc">Installation, commissioning and qualification of vial filling lines, isolators, bioreactors and lyophilizers</div>
+      </div>
+
+      <div class="competency-card fade-up">
+        <svg class="comp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/></svg>
+        <div class="comp-title">Team Leadership</div>
+        <div class="comp-desc">Proven leadership managing cross-functional engineering teams of up to 36 professionals</div>
+      </div>
+
+      <div class="competency-card fade-up">
+        <svg class="comp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.34C18 2.54 15.96 1 13.5 1c-1.5 0-2.81.75-3.5 1.75C9.31 1.75 8 1 6.5 1 4.04 1 2 2.54 2 4.66c0 .46.11.9.18 1.34H0v14h24V6h-4zM13.5 3c.92 0 1.5.66 1.5 1.66 0 .7-.57 1.72-1.5 2.87C12.07 6.38 11.5 5.36 11.5 4.66 11.5 3.66 12.08 3 13.5 3zM6.5 3C7.92 3 8.5 3.66 8.5 4.66c0 .7-.57 1.72-1.5 2.87C5.57 6.38 5 5.36 5 4.66 5 3.66 5.58 3 6.5 3zM2 18V8h8v10H2zm10 0V8h10v10h-10z"/></svg>
+        <div class="comp-title">Qualification &amp; Validation</div>
+        <div class="comp-desc">IQ / OQ / PQ execution for process and utility equipment across regulated pharmaceutical environments</div>
+      </div>
+
+      <div class="competency-card fade-up">
+        <svg class="comp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        <div class="comp-title">Utility Systems Management</div>
+        <div class="comp-desc">Operation and maintenance of PW, WFI, Pure Steam, HVAC, boilers, chillers, DG sets and BMS/EMS</div>
+      </div>
+
+      <div class="competency-card fade-up">
+        <svg class="comp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+        <div class="comp-title">CDMO Project Execution</div>
+        <div class="comp-desc">Managing Development and GMP Manufacturing area projects for Contract Development and Manufacturing Organisations</div>
+      </div>
+
+      <div class="competency-card fade-up">
+        <svg class="comp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm0-4h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5z"/></svg>
+        <div class="comp-title">EHS Management</div>
+        <div class="comp-desc">Environment, Health &amp; Safety management including government statutory compliance — MIDC, DISH, MSEB, GSEB</div>
+      </div>
+
+      <div class="competency-card fade-up">
+        <svg class="comp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>
+        <div class="comp-title">IT &amp; Technical Tools</div>
+        <div class="comp-desc">Proficient in SAP for maintenance management, AutoCAD for facility layouts and Microsoft Office for reporting</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ───────────────────────────────────────────── -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-tag">Career Journey</div>
+      <h2 class="section-title">Professional Experience</h2>
+    </div>
+    <div class="timeline">
+
+      <!-- Lambda -->
+      <div class="timeline-item current fade-up">
+        <div class="timeline-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div class="exp-company">Lambda Therapeutic Research Ltd</div>
+            <span class="exp-badge badge-current">Current Role</span>
+          </div>
+          <div class="exp-role">Deputy General Manager – Engineering &amp; Projects</div>
+          <div class="exp-meta">
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+              April 2024 – Present
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+              Team Size: 10
+            </span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Installation, commissioning &amp; qualification of vial filling lines with isolators, autoclaves, DHS and biopharmaceutical equipment (bioreactors, TFF, manufacturing vessels)</li>
+            <li>Generation &amp; distribution systems for Purified Water (PW), Water for Injection (WFI) and Pure Steam including PSG and MCDP</li>
+            <li>Executing CDMO project covering Development and GMP Manufacturing areas</li>
+            <li>Operation &amp; maintenance of critical utilities: boilers, air compressors, DG sets, chillers, HVAC, transformers, HT breakers, BMS/EMS, FAS and data centres</li>
+            <li>QMS and GMP document management ensuring full regulatory readiness</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Sterile Injectables</span>
+            <span class="exp-tag">Biopharmaceutical</span>
+            <span class="exp-tag">CDMO</span>
+            <span class="exp-tag">IQ/OQ/PQ</span>
+            <span class="exp-tag">QMS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zydus -->
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div class="exp-company">Zydus Lifescience Ltd, Ahmedabad</div>
+            <span class="exp-badge badge-past">Oct 2022 – Mar 2024</span>
+          </div>
+          <div class="exp-role">Deputy General Manager – Engineering (Sterile Division)</div>
+          <div class="exp-meta">
+            <span><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>1.5 Years</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Sterile manufacturing facility project execution — end-to-end management of capital engineering projects</li>
+            <li>IQ/OQ/PQ of vial filling lines with isolators, autoclaves, DHS, vial washers and manufacturing vessels</li>
+            <li>PW, WFI &amp; Pure Steam generation and distribution systems; PSG and MCDP commissioning</li>
+            <li>Management of all critical utility systems including HVAC, electrical infrastructure and BMS</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Sterile Division</span>
+            <span class="exp-tag">Project Execution</span>
+            <span class="exp-tag">Commissioning</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shilpa -->
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div class="exp-company">Shilpa Medicare Ltd, Bengaluru</div>
+            <span class="exp-badge badge-past">May 2021 – Oct 2022</span>
+          </div>
+          <div class="exp-role">AGM – Engineering &amp; EHS (Plant III &amp; VI)</div>
+          <div class="exp-meta">
+            <span><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>Team Size: 36</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Managed engineering operations across Plants III and VI — sterile formulation, transdermal and R&amp;D</li>
+            <li>Vial filling lines, sterilisers, process vessels, cell bank operation and maintenance</li>
+            <li>Oversaw EHS function for both plants including all government statutory compliance</li>
+            <li>Qualification, validation and QMS documentation management</li>
+            <li>Successfully cleared MHRA and USFDA regulatory inspections (2022)</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">MHRA Audit</span>
+            <span class="exp-tag">USFDA Audit</span>
+            <span class="exp-tag">EHS</span>
+            <span class="exp-tag">Multi-Plant</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emcure -->
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div class="exp-company">Emcure Pharmaceuticals Limited, Pune</div>
+            <span class="exp-badge badge-past">Jul 2005 – May 2021</span>
+          </div>
+          <div class="exp-role">AGM – Engineering</div>
+          <div class="exp-meta">
+            <span><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>~16 Years</span>
+            <span><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>Team Size: 12</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Biotech plant: Fermenters, Bioreactors, Centrifuges, Media Vessels and Lyophilizers — comprehensive O&amp;M management</li>
+            <li>Sterile formulation: Vial filling lines, PFS lines, Vial Washer, Tunnel, Isolator and Autoclave</li>
+            <li>Packing section: Blister packing machines, online printers, labelling and cartooning machines</li>
+            <li>Full utility management including government statutory compliance (MIDC, DISH, MSEB, GSEB)</li>
+            <li>Factory Acceptance Testing at TOFFLON Shanghai (Lyophilizer) and Fedegari Italy (Steam Sterilizer)</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Biotech Plant</span>
+            <span class="exp-tag">Lyophilizer</span>
+            <span class="exp-tag">PFS Line</span>
+            <span class="exp-tag">FAT International</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FDC -->
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div class="exp-company">FDC Limited, Verna, Goa</div>
+            <span class="exp-badge badge-past">Jul 1999 – Aug 2007</span>
+          </div>
+          <div class="exp-role">Manager – Maintenance (Plant I &amp; II)</div>
+          <div class="exp-meta">
+            <span><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>Team Size: 14</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Tablet &amp; capsule manufacturing and ORS manufacturing machinery O&amp;M across two production plants</li>
+            <li>Purified water system with automated D.M. Plant (SCADA-controlled)</li>
+            <li>Managed preventive &amp; breakdown maintenance schedules ensuring uninterrupted GMP production</li>
+            <li>Coordinated with QA and engineering teams for equipment qualification and change control</li>
+            <li>Successfully cleared MHRA, MCC, TGA and UNICEF regulatory inspections</li>
+            <li>International training: HVAC equipment &amp; chillers at Dunham Bush, Malaysia</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">MHRA</span>
+            <span class="exp-tag">MCC</span>
+            <span class="exp-tag">TGA</span>
+            <span class="exp-tag">UNICEF</span>
+            <span class="exp-tag">OSD</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Okasa -->
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div class="exp-company">Okasa Limited (Cipla), Kundaim, Goa</div>
+            <span class="exp-badge badge-past">Apr 1997 – Jun 1999</span>
+          </div>
+          <div class="exp-role">Maintenance Engineer</div>
+          <div class="exp-meta"></div>
+          <ul class="exp-bullets">
+            <li>Day-to-day operation, preventive maintenance and breakdown rectification of pharmaceutical machinery</li>
+            <li>Led erection, installation and commissioning of Tablets &amp; Capsules filling sections</li>
+            <li>Closed granulation lines: RMG, fluid bed dryers, sifters, Comminuting Mill, Multimill and blenders</li>
+            <li>Capsule filling machines (MATIC 90, PALM AF 80) and blister packing machines</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Commissioning</span>
+            <span class="exp-tag">OSD</span>
+            <span class="exp-tag">Granulation</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ACHIEVEMENTS ─────────────────────────────────────────── -->
+<section id="achievements">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-tag">By The Numbers</div>
+      <h2 class="section-title">Key Achievements</h2>
+    </div>
+    <div class="achieve-grid">
+      <div class="achieve-card fade-up">
+        <div class="achieve-num">28+</div>
+        <div class="achieve-title">Years in Pharmaceutical Engineering</div>
+        <div class="achieve-desc">Continuous career growth from Maintenance Engineer to DGM across leading Indian pharmaceutical companies</div>
+      </div>
+      <div class="achieve-card fade-up">
+        <div class="achieve-num">7+</div>
+        <div class="achieve-title">International Regulatory Bodies Cleared</div>
+        <div class="achieve-desc">USFDA, MHRA, TGA, MCC, UNICEF, IDA — representing India's most rigorous compliance requirements</div>
+      </div>
+      <div class="achieve-card fade-up">
+        <div class="achieve-num">36</div>
+        <div class="achieve-title">Largest Engineering Team Led</div>
+        <div class="achieve-desc">At Shilpa Medicare Ltd — managing multi-disciplinary teams across two simultaneous plants</div>
+      </div>
+      <div class="achieve-card fade-up">
+        <div class="achieve-num">3</div>
+        <div class="achieve-title">International Factory Acceptance Tests</div>
+        <div class="achieve-desc">TOFFLON Shanghai (Lyophilizer), Fedegari Italy (Steam Sterilizer), Dunham Bush Malaysia (HVAC &amp; Chillers)</div>
+      </div>
+    </div>
+
+    <div class="audit-strip fade-up">
+      <div class="audit-strip-title">Regulatory Inspections Successfully Cleared</div>
+      <div class="audit-badges">
+        <div class="audit-badge">USFDA</div>
+        <div class="audit-badge">MHRA (UK)</div>
+        <div class="audit-badge">TGA (Australia)</div>
+        <div class="audit-badge">MCC (South Africa)</div>
+        <div class="audit-badge">UNICEF</div>
+        <div class="audit-badge">IDA</div>
+        <div class="audit-badge">GIDC</div>
+        <div class="audit-badge">MIDC</div>
+        <div class="audit-badge">DISH</div>
+        <div class="audit-badge">MSEB / GSEB</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INDUSTRIES ───────────────────────────────────────────── -->
+<section id="industries">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-tag">Domains</div>
+      <h2 class="section-title">Industry Expertise</h2>
+    </div>
+    <div class="industry-grid">
+      <div class="industry-card fade-up">
+        <span class="industry-icon">💉</span>
+        <div class="industry-name">Sterile Injectable</div>
+        <div class="industry-note">Vial filling, isolators, autoclaves, DHS, washers</div>
+      </div>
+      <div class="industry-card fade-up">
+        <span class="industry-icon">🧬</span>
+        <div class="industry-name">Biopharmaceutical</div>
+        <div class="industry-note">Bioreactors, fermenters, TFF, cell bank, lyophilizers</div>
+      </div>
+      <div class="industry-card fade-up">
+        <span class="industry-icon">🔬</span>
+        <div class="industry-name">API Manufacturing</div>
+        <div class="industry-note">Process vessels, utility systems, GMP compliance</div>
+      </div>
+      <div class="industry-card fade-up">
+        <span class="industry-icon">💊</span>
+        <div class="industry-name">Oral Solid Dosage</div>
+        <div class="industry-note">Tablets, capsules, granulation, blister packing</div>
+      </div>
+      <div class="industry-card fade-up">
+        <span class="industry-icon">🏭</span>
+        <div class="industry-name">CDMO Projects</div>
+        <div class="industry-note">Development and GMP manufacturing area projects</div>
+      </div>
+      <div class="industry-card fade-up">
+        <span class="industry-icon">🌡️</span>
+        <div class="industry-name">Critical Utilities</div>
+        <div class="industry-note">PW, WFI, Pure Steam, HVAC, boilers, chillers</div>
+      </div>
+      <div class="industry-card fade-up">
+        <span class="industry-icon">⚡</span>
+        <div class="industry-name">Electrical Infrastructure</div>
+        <div class="industry-note">HT/LT panels, transformers, DG sets, BMS/EMS</div>
+      </div>
+      <div class="industry-card fade-up">
+        <span class="industry-icon">🩹</span>
+        <div class="industry-name">Transdermal &amp; R&amp;D</div>
+        <div class="industry-note">Transdermal line equipment and R&amp;D instruments</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EDUCATION ────────────────────────────────────────────── -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-tag">Qualifications &amp; Development</div>
+      <h2 class="section-title">Education &amp; Training</h2>
+    </div>
+
+    <div class="edu-grid fade-up">
+      <div class="edu-card">
+        <div class="edu-year-block">2014</div>
+        <div>
+          <div class="edu-degree">B.Tech – Mechanical Engineering</div>
+          <div class="edu-institution">NIIM University</div>
+          <span class="edu-score">67%</span>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-year-block">1994</div>
+        <div>
+          <div class="edu-degree">Diploma – Electrical Engineering</div>
+          <div class="edu-institution">Board of Technical Education (BTE), Mumbai</div>
+          <span class="edu-score">56%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header fade-up" style="margin-top:52px; margin-bottom:24px;">
+      <div class="section-tag">Professional Development</div>
+      <h3 style="font-family:var(--ff-display);font-size:1.3rem;font-weight:600;color:var(--navy);">International Training Programmes</h3>
+    </div>
+    <div class="training-grid fade-up">
+      <div class="training-card">
+        <div class="training-title">Lyophilizer Factory Acceptance Test</div>
+        <div class="training-org">TOFFLON — Shanghai, China</div>
+      </div>
+      <div class="training-card">
+        <div class="training-title">Steam Sterilizer FAT</div>
+        <div class="training-org">Fedegari — Italy</div>
+      </div>
+      <div class="training-card">
+        <div class="training-title">HVAC Equipment &amp; Chillers</div>
+        <div class="training-org">Dunham Bush — Malaysia</div>
+      </div>
+      <div class="training-card">
+        <div class="training-title">Diesel Generator Sets</div>
+        <div class="training-org">Cummins — Pune, India</div>
+      </div>
+      <div class="training-card">
+        <div class="training-title">QMS &amp; GMP Documentation</div>
+        <div class="training-org">On-the-job across USFDA/MHRA-regulated sites</div>
+      </div>
+      <div class="training-card">
+        <div class="training-title">Regulatory Audit Preparedness</div>
+        <div class="training-org">USFDA, MHRA, TGA, MCC, UNICEF inspections</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ───────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-left fade-up">
+      <div class="section-tag" style="color:var(--gold);font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px;">Get In Touch</div>
+      <h2 class="section-title" style="color:var(--white);padding-bottom:18px;position:relative;">Open to Opportunities
+        <span style="position:absolute;bottom:0;left:0;width:40px;height:3px;background:var(--gold);border-radius:2px;display:block;"></span>
+      </h2>
+      <p>Available for senior engineering leadership roles in the pharmaceutical and biopharmaceutical sector. With a 3-month notice period (negotiable), currently based in Ahmedabad, Gujarat and open to relocation for the right opportunity.</p>
+    </div>
+    <div class="contact-items fade-up">
+      <a class="contact-row" href="tel:+919370511231">
+        <div class="contact-row-icon">
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        </div>
+        <div>
+          <div class="contact-row-label">Primary Phone</div>
+          <div class="contact-row-value">+91 93705 11231</div>
+        </div>
+      </a>
+      <a class="contact-row" href="tel:+918866162956">
+        <div class="contact-row-icon">
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        </div>
+        <div>
+          <div class="contact-row-label">Alternate Phone</div>
+          <div class="contact-row-value">+91 88661 62956</div>
+        </div>
+      </a>
+      <a class="contact-row" href="mailto:shreyash56@gmail.com">
+        <div class="contact-row-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div>
+          <div class="contact-row-label">Email</div>
+          <div class="contact-row-value">shreyash56@gmail.com</div>
+        </div>
+      </a>
+      <div class="contact-row" style="cursor:default;">
+        <div class="contact-row-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div>
+          <div class="contact-row-label">Current Location</div>
+          <div class="contact-row-value">Ahmedabad, Gujarat</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Sarjerao K. Shinde &nbsp;·&nbsp; Deputy General Manager – Engineering &amp; Projects &nbsp;·&nbsp; <span>28+ Years Pharmaceutical Engineering</span></p>
+</footer>
+
+<script>
+// Intersection Observer for fade-up animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current
+      ? 'var(--gold)'
+      : 'rgba(255,255,255,0.65)';
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
